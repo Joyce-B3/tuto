@@ -1,0 +1,30 @@
+<footer th:fragment="footer">
+  <div class="bg-dark text-bg-dark pt-2 pb-5 text-center">© La Cantine - Groupe Scolaire Duverger</div>
+</footer>
+
+
+<header th:fragment="header" class="sticky-top">
+  <nav class="navbar navbar-nav bg-success navbar-dark" style="height: 3rem;">
+
+    <!-- Formulaire de déconnexion en POST, affiché uniquement si l'utilisateur est connecté -->
+    <th:block th:if="${session.connected}">
+      <form th:if="${session.connected}" th:action="@{/disconnect}" method="post" style="display: inline;">
+        <button type="submit" class="btn btn-link text-white"
+          style="text-decoration: none; border: none; background: none; padding: 0;">
+          Se déconnecter
+        </button>
+      </form>
+
+    </th:block>
+
+  </nav>
+</header>
+
+
+
+<head th:fragment="head(titre)">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${titre} + ' - Tuto'"></title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>

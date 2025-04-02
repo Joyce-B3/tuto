@@ -1,17 +1,11 @@
 <!doctype html>
 <html lang="fr">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connexion - Tuto</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
+<head th:replace="~{_fragments/layout :: head('Connexion')}"></head>
 
 <body>
 
-  <header class="sticky-top">
-    <nav class="bg-success" style="height: 3rem;"></nav>
+  <header th:replace="~{ _fragments/layout :: header}">
   </header>
 
   <section class="container my-3">
@@ -27,14 +21,15 @@
         <div class="py-2 py-lg-4"></div>
 
         <div class="mx-auto" style="max-width: 30rem;">
-          <form class="mb-auto" th:action="@{/connect}" method="get">
+          <form class="mb-auto" th:action="@{/connect}" method="post">
 
             <div class="row my-4">
               <div class="col-12 col-xl-5">
                 <label for="username" class="form-label">Identifiant</label>
               </div>
               <div class="col">
-                <input type="text" id="username" class="form-control" name="username" required autofocus>
+                <input type="text" id="username" class="form-control" name="username" th:value="${username}" required
+                  autofocus>
               </div>
             </div>
 
@@ -43,7 +38,8 @@
                 <label for="motDePasse" class="col-form-label">Mot de passe</label>
               </div>
               <div class="col">
-                <input type="password" id="motDePasse" class="form-control" name="password" required>
+                <input type="password" id="motDePasse" class="form-control" name="password" th:value="${motdepasse}"
+                  required>
               </div>
             </div>
 
@@ -62,8 +58,7 @@
     </div>
   </section>
 
-  <footer>
-    <div class="bg-dark text-bg-dark pt-2 pb-5 text-center">© La Cantine</div>
+  <footer th:replace="~{ _fragments/layout :: footer }">
   </footer>
 
 </body>
